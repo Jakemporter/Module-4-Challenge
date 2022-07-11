@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  padding: 1em;
+}
+.head {
+  font-size: larger;
+  font-weight: bold;
+  padding: 1em;
+}
+.timer {
+  text-align: right;
+}
