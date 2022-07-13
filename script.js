@@ -131,21 +131,29 @@ buttonList.on("click", function (event) {
   }
 });
 
-function highScoresPage() {
-  rootEl2 = $("#root2");
+var rootEl2 = $("#root2");
+function highScoresPage(event) {
+  var listEl = rootEl2.children("header").children("#high-score-list");
+  event.preventDefault();
+  var player = localStorage.getItem(`player${time}`);
+  var highScore = localStorage.getItem(`Score${player}`);
+  $.each(listEl, function () {
+    highScores.push(highScore);
+  });
+  listEl.text(highScores);
   console.log(rootEl2);
   //rootEl.children("header").children("ol").children("li").text(localStorage.getItem("Score"));
-  var listEl = rootEl2.children("header").children("ol");
-  var player = localStorage.getItem(`player${time}`);
-  console.log(localStorage.getItem(`Score${player}`));
-  listEl.append("<li>" + localStorage.getItem(`Score${player}`) + "</li>");
-  clearEl = rootEl2.children("header").children("#clear");
+  // console.log(localStorage.getItem(`Score${player}`));
+  // listEl.append("<li>" + localStorage.getItem(`Score${player}`) + "</li>");
+  var clearEl = rootEl2.children("header").children("#clear");
   clearEl.on("click", clear);
 }
+var loadButtonEl = rootEl2.children("header").children("#load");
+loadButtonEl.on("click", highScoresPage);
 
 function clear() {
   localStorage.clear();
   location.reload();
 }
 
-highScoresPage();
+highScoresPage;
