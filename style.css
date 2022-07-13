@@ -10,12 +10,21 @@ h1 {
 .timer {
   text-align: right;
 }
-.list {
-  text-align: center;
+.high-score-list {
+  padding-left: 45%;
 }
 li {
   padding: .5em;
 }
 div {
-  align-items: center;
+  padding-left: 35%;
+}
+section {
+  padding-left: 45%;
+  margin: 25px;
+  width: 350px;
+  height: 200px;
+}
+body {
+  background-color: lightblue;
 }

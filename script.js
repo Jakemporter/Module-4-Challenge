@@ -46,7 +46,23 @@ button4 = answerOptions.children("li").children("#Answer-Four");
 buttonList = answerOptions.children("li").children("button");
 
 i = 0;
+var player;
+var highScores = [];
 function game() {
+  if (i >= questions.length) {
+    player = window.prompt("Enter Initials");
+    alert(player + ": " + score);
+    highScores.push(player + ": " + score);
+    localStorage.setItem("Score", highScores);
+    window.location.href = "./high-scores.html";
+    rootEl2 = $("#root");
+    console.log(localStorage.getItem("Score"));
+    console.log(rootEl2);
+    rootEl2.children("header").children("ol").children("li").text(localStorage.getItem("Score"));
+
+    return;
+  }
+  startGame.css("display", "none");
   if (secondsLeft > 0) {
     while (i < questions.length) {
       console.log(secondsLeft);
@@ -103,12 +119,11 @@ buttonList.on("click", function (event) {
     info.text("correct");
     i++;
     score++;
-    scoreEl.text(score);
+    scoreEl.text("Score: " + score);
     game();
   } else {
     info.text("Incorrect");
     i++;
-    score--;
     scoreEl.text("Score: " + score);
     game();
   }
