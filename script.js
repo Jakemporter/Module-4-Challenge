@@ -54,7 +54,7 @@ function game() {
     alert("Score = questions correct + time left");
     score += secondsLeft;
     highScores.push(player + ": " + score);
-    localStorage.setItem("Score", highScores);
+    localStorage.setItem(`Score${player}`, highScores);
     window.location.href = "./high-scores.html";
     return;
   }
@@ -125,3 +125,13 @@ buttonList.on("click", function (event) {
     game();
   }
 });
+
+function highScoresPage() {
+  rootEl2 = $("#root2");
+  console.log(rootEl2);
+  //rootEl.children("header").children("ol").children("li").text(localStorage.getItem("Score"));
+  var listEl = rootEl2.children("header").children("ol");
+  listEl.append("<li>" + localStorage.getItem(`Score${player}`) + "</li>");
+  clearEl = rootEl2.children("header").children("#clear");
+}
+highScoresPage();
