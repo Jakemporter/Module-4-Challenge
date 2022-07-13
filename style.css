@@ -13,3 +13,6 @@ h1 {
 .list {
   text-align: center;
 }
+li {
+  padding: .5em;
+}
