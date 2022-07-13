@@ -45,6 +45,9 @@ button3 = answerOptions.children("li").children("#Answer-Three");
 button4 = answerOptions.children("li").children("#Answer-Four");
 buttonList = answerOptions.children("li").children("button");
 
+time = new Date();
+time = time.getDate();
+
 i = 0;
 var player;
 var highScores = [];
@@ -54,7 +57,9 @@ function game() {
     alert("Score = questions correct + time left");
     score += secondsLeft;
     highScores.push(player + ": " + score);
+    localStorage.setItem(`player${time}`, player);
     localStorage.setItem(`Score${player}`, highScores);
+    console.log(localStorage.getItem(`Score${player}`));
     window.location.href = "./high-scores.html";
     return;
   }
@@ -131,7 +136,16 @@ function highScoresPage() {
   console.log(rootEl2);
   //rootEl.children("header").children("ol").children("li").text(localStorage.getItem("Score"));
   var listEl = rootEl2.children("header").children("ol");
+  var player = localStorage.getItem(`player${time}`);
+  console.log(localStorage.getItem(`Score${player}`));
   listEl.append("<li>" + localStorage.getItem(`Score${player}`) + "</li>");
   clearEl = rootEl2.children("header").children("#clear");
+  clearEl.on("click", clear);
 }
+
+function clear() {
+  localStorage.clear();
+  location.reload();
+}
+
 highScoresPage();
