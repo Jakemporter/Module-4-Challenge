@@ -16,3 +16,6 @@ h1 {
 li {
   padding: .5em;
 }
+div {
+  align-items: center;
+}

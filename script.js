@@ -3,6 +3,8 @@ var rootEl = $("#root");
 var answerOptions = rootEl.children("section").children("ol");
 var questionAsked = rootEl.children("section").children("h2");
 var info = rootEl.children("#alert").children("h2");
+var scoreEl = rootEl.children("#score").children("h4");
+
 var questions = [
   "Commonly used data types Do Not include:",
   "The condition in an if / else statement is enclosed with _____.",
@@ -36,11 +38,6 @@ function countdown() {
 var startGame = rootEl.children("section").children("#Start-Game");
 
 startGame.on("click", countdown);
-function wrongAnswer() {
-  secondsLeft - 10;
-  score--;
-  console.log("score", score);
-}
 
 button1 = answerOptions.children("li").children("#Answer-One");
 button2 = answerOptions.children("li").children("#Answer-Two");
@@ -95,17 +92,7 @@ function game() {
         button4.attr("data-answer", answers[i][3]);
         button4.attr("correct", true);
       }
-
-      console.log(buttonList);
-
       break;
-      // if ("test") {
-      //   score++;
-      //   i++;
-      // } else {
-      //   score--;
-      //   i++;
-      // }
     }
   }
 }
@@ -115,6 +102,14 @@ buttonList.on("click", function (event) {
   if ($(event.target).attr("correct")) {
     info.text("correct");
     i++;
+    score++;
+    scoreEl.text(score);
+    game();
+  } else {
+    info.text("Incorrect");
+    i++;
+    score--;
+    scoreEl.text("Score: " + score);
     game();
   }
 });
