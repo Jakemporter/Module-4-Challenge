@@ -111,7 +111,7 @@ buttonList.on("click", function (event) {
   console.log($(event.target).attr("data-answer"));
   console.log($(event.target).attr("correct"));
   if ($(event.target).attr("correct")) {
-    info.text("correct");
+    info.text("Correct");
     i++;
     score++;
     scoreEl.text("Score: " + score);
@@ -120,6 +120,7 @@ buttonList.on("click", function (event) {
     info.text("Incorrect");
     i++;
     scoreEl.text("Score: " + score);
+    secondsLeft -= 10;
     game();
   }
 });
