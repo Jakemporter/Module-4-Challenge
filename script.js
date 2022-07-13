@@ -51,7 +51,8 @@ var highScores = [];
 function game() {
   if (i >= questions.length) {
     player = window.prompt("Enter Initials");
-    //alert(player + ": " + score);
+    alert("Score = questions correct + time left");
+    score += secondsLeft;
     highScores.push(player + ": " + score);
     localStorage.setItem("Score", highScores);
     window.location.href = "./high-scores.html";
