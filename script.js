@@ -51,15 +51,10 @@ var highScores = [];
 function game() {
   if (i >= questions.length) {
     player = window.prompt("Enter Initials");
-    alert(player + ": " + score);
+    //alert(player + ": " + score);
     highScores.push(player + ": " + score);
     localStorage.setItem("Score", highScores);
     window.location.href = "./high-scores.html";
-    rootEl2 = $("#root");
-    console.log(localStorage.getItem("Score"));
-    console.log(rootEl2);
-    rootEl2.children("header").children("ol").children("li").text(localStorage.getItem("Score"));
-
     return;
   }
   startGame.css("display", "none");
